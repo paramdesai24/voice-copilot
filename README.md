@@ -6,7 +6,9 @@ A full-stack AI restaurant ordering system that combines a Fastify backend, a re
 
 The repository is organized around three main parts:
 
-- `petpooja/` — the main TypeScript backend and restaurant orchestration service
+- `petpooja/` — the main TypeScript backend and restaurant orchestration service, which includes:
+  - **Revenue Intelligence Dashboard**: Built using Next.js 16, React 19, and ECharts.
+  - **Revenue Copilot Chatbot**: AI-driven conversational RAG + NL-to-SQL interface.
 - `voice_agent/` — the real-time Twilio voice agent that answers calls and streams audio
 - `voice_engine/` — a standalone offline STT/TTS demo engine for speech experimentation
 
@@ -254,6 +256,35 @@ For a quick voice-agent import check:
 python voice_agent/start_agent.py --dry-run
 ```
 
-## Submission Summary
+## Platform Modules
 
-This project demonstrates an end-to-end AI restaurant ordering experience that combines backend orchestration, real-time telephony, speech processing, and restaurant-focused workflow support. It is suitable for an internship or hackathon submission because it shows both product thinking and systems integration.
+### 1. Revenue Intelligence Dashboard
+The **Revenue Intelligence Dashboard** is a real-time visualization platform built to help restaurant owners make data-driven decisions on pricing, promotion, and menu design.
+- **Technology Stack**: Next.js 16, React 19, TypeScript, ECharts.
+- **KPI Cards**: Displays critical metrics like Total Revenue, Best Day, Peak Hour, Hidden Gold Count, and Top Trending Item.
+- **Analytics Charts**: Includes 6 visualization widgets:
+  1. Menu Position Matrix
+  2. Daily Revenue Trend
+  3. Revenue by Day of Week
+  4. Item Revenue Contribution
+  5. Trending Items
+  6. Peak Order Hours
+- **Actionable Insights**: Every chart features plain-language advice summarizing trends and proposing optimizations (e.g. suggesting combo updates or price adjustments).
+- **How to Start**:
+  ```bash
+  cd petpooja/src/dashboard
+  npm install
+  npm run dev
+  ```
+  Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 2. Revenue Copilot Chatbot (पेटBOT)
+The **Revenue Copilot** is an AI-powered conversational chatbot that answers natural language questions about restaurant performance, margins, combos, and trends.
+- **How it Works**: Uses **RAG (Retrieval-Augmented Generation)** coupled with an **NL-to-SQL engine** to retrieve data directly from the PostgreSQL database, guaranteeing that answers are grounded in real operational data.
+- **Example Queries**:
+  - *"Which dishes generate the highest margin?"*
+  - *"Which items are hidden gold?"*
+  - *"Why are Monday revenues low?"*
+  - *"What are my peak hours?"*
+- **How to Access**: Navigate to [http://localhost:3000/revenue-copilot](http://localhost:3000/revenue-copilot) while the dashboard is running.
+
